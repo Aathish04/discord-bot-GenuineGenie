@@ -30,13 +30,13 @@ client.setMaxListeners(100);
 );
  */
 try {
-    console.log('Starting up Discord Client...');
-    client.on('ready', async () => {
-        console.log('Estabished connection with Discord...');
-        console.log(`Logged in as ${client.user.tag}!\n`);
+   console.log('Starting up Discord Client...');
+   client.on('ready', async () => {
+      console.log('Estabished connection with Discord...');
+      console.log(`Logged in as ${client.user.tag}!\n`);
 
-        await mongo();
-        /* client.registry
+      await mongo();
+      /* client.registry
             .registerGroups([
                 ['moderation', 'moderation commands'],
                 ['misc', 'misc commands'],
@@ -45,17 +45,17 @@ try {
             .registerDefaults()
             .registerCommandsIn(path.join(__dirname, 'cmds')); */
 
-        // load Prefixes
-        loadPrefixes(client);
+      // load Prefixes
+      loadPrefixes(client);
 
-        // Load commands
-        loadCommands(client);
+      // Load commands
+      loadCommands(client);
 
-        // Load features
-        loadFeatures(client);
-    });
-    //client.login(config.token);
-    client.login(process.env.token);
+      // Load features
+      loadFeatures(client);
+   });
+   client.login(config.token);
+   //client.login(process.env.token);
 } catch {
-    console.log(err, '\n');
+   console.log(err, '\n');
 }
