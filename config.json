@@ -1,3 +1,5 @@
 {
-    "prefix": "hit"
+   "prefix": "hit",
+   "mongoURL": "",
+   "token": ""
 }
