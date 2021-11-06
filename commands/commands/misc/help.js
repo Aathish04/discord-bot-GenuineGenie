@@ -50,6 +50,7 @@ module.exports = {
 
             let footer = `\n\n\`${prefix} help <command_name>\` - to know more about a command\n`;
             footer += `NOTE: Some commands require special *roles* and/or *permissions* to run`;
+            console.log(fields);
             const embed = new Discord.MessageEmbed()
                 //.setDescription('modules and commands of the GG-bot')
                 //.setTitle(`_Genuine Genie_ #HELP`)
