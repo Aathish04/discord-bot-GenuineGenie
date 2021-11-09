@@ -160,6 +160,7 @@ const handleReacion = async (reaction, user, add) => {
 };
 
 module.exports = async (client) => {
+   console.log('did i reach here?');
    await loadCache();
    for (const [guildId, [channelId, emojiRoles]] of Object.entries(roleclaimCache)) {
       // returns an actual emoji object, and emojiName = actual name of the emoji
@@ -167,6 +168,7 @@ module.exports = async (client) => {
       const channel = await client.channels.fetch(channelId);
       await channel.messages.fetch();
    }
+   console.log('did i reach here???');
 
    // We need to add a couple of event listeners now
    client.on('messageReactionAdd', (reaction, user) => {
