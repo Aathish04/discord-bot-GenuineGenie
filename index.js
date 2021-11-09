@@ -54,8 +54,11 @@ try {
       // Load features
       loadFeatures(client);
    });
-   client.login(config.token);
-   //client.login(process.env.token);
+   if (config.enableLocalTesting) {
+      client.login(config.token);
+   } else {
+      client.login(process.env.token);
+   }
 } catch {
    console.log(err, '\n');
 }

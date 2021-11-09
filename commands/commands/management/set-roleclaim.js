@@ -14,7 +14,7 @@ module.exports = {
         const { member, guild, content } = message;
         const channel = message.mentions.channels.first() || message.channel;
         let query = {};
-        const result = await roleclaimSchema.findOne({ guildId });
+        const result = await roleclaimSchema.findOne({ guildId: guild.id });
         if (result) {
             query = JSON.parse(result.emojiRoles);
         }

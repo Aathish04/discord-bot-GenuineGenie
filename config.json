@@ -1,5 +1,6 @@
 {
    "prefix": "hit",
    "mongoURL": "",
-   "token": ""
+   "token": "",
+   "enableLocalTesting": true
 }
