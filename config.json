@@ -2,5 +2,5 @@
    "prefix": "hit",
    "mongoURL": "",
    "token": "",
-   "enableLocalTesting": true
+   "enableLocalTesting": false
 }
