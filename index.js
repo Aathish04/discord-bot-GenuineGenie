@@ -3,11 +3,15 @@ require('module-alias/register');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const config = require('@root/config.json');
-const loadCommands = require('@root/commands/load-commands');
-const loadFeatures = require('@root/features/load-features');
-const { loadPrefixes } = require('./commands/command-base');
-const mongo = require('@root/database/mongo');
+try {
+   const config = require('@root/config.json');
+   const loadCommands = require('@root/commands/load-commands');
+   const loadFeatures = require('@root/features/load-features');
+   const { loadPrefixes } = require('./commands/command-base');
+   const mongo = require('@root/database/mongo');
+} catch (err) {
+   console.log(err, '\n');
+}
 
 /* 
 const { MongoClient } = require('mongodb');
@@ -59,6 +63,6 @@ try {
    } else {
       client.login(process.env.token);
    }
-} catch {
+} catch (err) {
    console.log(err, '\n');
 }
