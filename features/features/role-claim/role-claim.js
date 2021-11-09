@@ -163,8 +163,8 @@ module.exports = async (client) => {
    await loadCache();
    for (const [guildId, [channelId, emojiRoles]] of Object.entries(roleclaimCache)) {
       // returns an actual emoji object, and emojiName = actual name of the emoji
-      const guild = await client.guilds.fetch(guildId);
-      const channel = guild.channels.cache.get(channelId);
+      // const guild = await client.guilds.fetch(guildId);
+      const channel = await client.channels.fetch(channelId);
       await channel.messages.fetch();
    }
 
