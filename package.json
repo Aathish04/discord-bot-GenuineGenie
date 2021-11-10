@@ -31,8 +31,5 @@
       "@utils": "./utils",
       "@features": "./features/features",
       "@commands": "./commands/commands"
-   },
-   "engines": {
-      "node": "16.13.0"
    }
 }
