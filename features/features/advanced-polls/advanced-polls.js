@@ -7,13 +7,13 @@ let pollsCache = {};
 const onMessage = async (message) => {
    if (message.author.bot) return;
    const { guild, content, channel } = message;
-   message.reactions.removeAll();
 
    const curchannelId = pollsCache[guild.id];
 
    if (curchannelId !== channel.id) {
       return;
    }
+   message.reactions.removeAll();
 
    const eachLine = content.split('\n');
 
@@ -24,6 +24,7 @@ const onMessage = async (message) => {
          emoji = emoji.replace(/^[a-zA-Z0-9\(\)\,\.\[\]\: ]*/, '');
 
          try {
+            console.log('its me - 1');
             message.react(emoji).catch((err) => {
                console.log(err);
             });

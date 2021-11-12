@@ -69,6 +69,7 @@ const onMessage = async (message, old) => {
          }
 
          try {
+            console.log('its me - 2');
             message.react(orig).catch((err) => {
                console.log(err);
             });
