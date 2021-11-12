@@ -1,6 +1,6 @@
 {
    "prefix": "hit",
-   "mongoURL": "mongodb+srv://cc_applicationbuilder:v0htetauyYwUdlhz@cluster0.oh05c.mongodb.net/gg-tester?retryWrites=true&w=majority",
-   "token": "OTA2NDQwNDIyOTUwMzE4MDgx.YYYqbQ.HCkS0oL9y0KI0BayOQS_WeqWrtA",
-   "enableLocalTesting": true
+   "mongoURL": "",
+   "token": "",
+   "enableLocalTesting": false
 }
