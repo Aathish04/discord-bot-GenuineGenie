@@ -36,7 +36,7 @@ const onMessage = async (message, old) => {
    const { guild, content, channel } = message;
    //message.reactions.removeAll();
 
-   //if (!roleclaimCache[guild.id]) return;
+   if (!roleclaimCache[guild.id]) return;
    const [channelId, emojiRoles] = roleclaimCache[guild.id];
 
    if (channelId !== channel.id) {
