@@ -5,6 +5,7 @@ module.exports = (client) => {
 
    let count = 0;
    client.on('message', async (og_message) => {
+      console.log(908740745148661771, channel.id);
       const { content, member, guild, createdAt, channel } = og_message;
       if (channel.id !== channelId) return;
       if (member.user.bot) return;
