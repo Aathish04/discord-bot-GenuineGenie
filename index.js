@@ -4,7 +4,7 @@ try {
    const Discord = require('discord.js');
    const client = new Discord.Client();
 
-   const config = require('@root/config.json');
+   const config = require('@root/appConfig.js');
    const loadCommands = require('@root/commands/load-commands');
    const loadFeatures = require('@root/features/load-features');
    const { loadPrefixes } = require('./commands/command-base');
@@ -55,11 +55,7 @@ const client = new Commando.CommandoClient({
          // Load features
          loadFeatures(client);
       });
-      if (config.enableLocalTesting) {
-         client.login(config.token);
-      } else {
-         client.login(process.env.token);
-      }
+      client.login(config.token);
    } catch (err) {
       console.log(err, '\n');
    }

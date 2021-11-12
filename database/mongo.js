@@ -1,12 +1,7 @@
 const mongoose = require('mongoose');
-const config = require('@root/config.json');
+const config = require('@root/appConfig.js');
 
-let mongoURL = null;
-if (config.enableLocalTesting) {
-   mongoURL = config.mongoURL;
-} else {
-   mongoURL = process.env.mongoURL;
-}
+const mongoURL = config.mongoURL;
 
 module.exports = async () => {
    await mongoose.connect(encodeURI(mongoURL), {
