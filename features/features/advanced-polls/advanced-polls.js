@@ -24,7 +24,6 @@ const onMessage = async (message) => {
          emoji = emoji.replace(/^[a-zA-Z0-9\(\)\,\.\[\]\: ]*/, '');
 
          try {
-            console.log('its me - 1');
             message.react(emoji).catch((err) => {
                console.log(err);
             });

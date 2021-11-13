@@ -57,7 +57,6 @@ module.exports = (client) => {
             .setFooter('Want to suggest something? Simply type it in this channel');
 
          channel.send(embed).then((message) => {
-            console.log('its me - 3');
             message.react('👍').then(() => {
                message.react('👎');
             });

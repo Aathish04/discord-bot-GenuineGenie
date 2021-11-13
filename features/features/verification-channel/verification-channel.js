@@ -59,7 +59,6 @@ module.exports = (client) => {
    populateCache(client);
 
    client.on('messageReactionAdd', (reaction, user) => {
-      console.log('its me - 4');
       const channelId = reaction.message.channel.id;
       const roleId = verificationCache[channelId];
 
@@ -74,7 +73,6 @@ module.exports = (client) => {
    });
 
    client.on('messageReactionRemove', (reaction, user) => {
-      console.log('its me - 5');
       const channelId = reaction.message.channel.id;
       const roleId = verificationCache[channelId];
 

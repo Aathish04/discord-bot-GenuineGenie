@@ -63,7 +63,7 @@ module.exports = {
                 }
 
                 // react to latest message with emoji
-                console.log('its me - 7');
+                
                 firstMessage.react(emoji);
 
                 // update to mongo db

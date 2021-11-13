@@ -8,7 +8,9 @@ module.exports = (client) => {
       const { content, member, guild, createdAt, channel } = og_message;
       if (channel.id !== channelId) return;
       if (member.user.bot) return;
-      await og_message.delete();
+      og_message.delete().then(() => {
+         console.log('message deleted');
+      });
       if (content === 'reset') {
          count = 0;
          return;
