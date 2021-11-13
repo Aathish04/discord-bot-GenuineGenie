@@ -55,6 +55,7 @@ const client = new Commando.CommandoClient({
          // Load features
          loadFeatures(client);
       });
+      console.log('consoling token');
       client.login(config.token);
    } catch (err) {
       console.log(err, '\n');
