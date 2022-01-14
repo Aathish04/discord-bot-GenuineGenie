@@ -10,7 +10,7 @@ config.redisURL = process.env.redisURL;
 config.token = process.env.TOKEN;
 config.enableLocalTesting = process.env.ENABLE_LOCAL_TESTING;
 config.dummy = 'dumy';
-config.prefix = "hit";
+config.prefix = "rub";
 
 module.exports = config;
 
