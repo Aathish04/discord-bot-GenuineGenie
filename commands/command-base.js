@@ -1,6 +1,7 @@
+const config = require('@root/appConfig.js');
 const mongo = require('@root/database/mongo');
 const prefixSchema = require('@schemas/prefix-schema');
-const { prefix: globalPrefix } = require('@root/config.json');
+const globalPrefix = config.prefix
 const updateXP = require('@utils/updateXP');
 let givePrefix = globalPrefix;
 const guildPrefixes = {}; //guildId: prefix
