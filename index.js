@@ -37,14 +37,6 @@ const client = new Commando.CommandoClient({
          console.log(`Logged in as ${client.user.tag}!\n`);
 
          await mongo();
-         /* client.registry
-            .registerGroups([
-                ['moderation', 'moderation commands'],
-                ['misc', 'misc commands'],
-                ['economy', 'money and economy system commands'],
-            ])
-            .registerDefaults()
-            .registerCommandsIn(path.join(__dirname, 'cmds')); */
 
          // load Prefixes
          loadPrefixes(client);
