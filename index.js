@@ -1,65 +1,38 @@
-require('module-alias/register');
+const fs = require('fs');
+const { Client, Collection, Intents } = require('discord.js');
 
-try {
-   const Discord = require('discord.js');
-   const client = new Discord.Client();
+const clientId = process.env["CLIENTID"]
+const guildId = process.env["DEV_GUILD_ID"]
+const token = process.env["TOKEN"]
 
-   const config = require('@root/appConfig.js');
-   const loadCommands = require('@root/commands/load-commands');
-   const loadFeatures = require('@root/features/load-features');
-   const { loadPrefixes } = require('./commands/command-base');
-   const mongo = require('@root/database/mongo');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS,Intents.FLAGS.GUILD_MESSAGES] });
 
-   /* 
-const { MongoClient } = require('mongodb');
-const MongoDBProvider = require('commando-provider-mongo');
-const Commando = require('discord.js-commando'); 
-const client = new Commando.CommandoClient({
-    owner: '384318671037661184',
-    commandPrefix: '!',
-}); */
-   client.setMaxListeners(100);
+client.commands = new Collection();
+const categoryFolders = fs.readdirSync("./commands").filter(file => file.endsWith('_commands'))
+for (const category of categoryFolders){
+  const commandFiles = fs.readdirSync(`./commands/${category}`).filter(file => file.endsWith('.js'));
+  for (const file of commandFiles) {
+	  const command = require(`./commands/${category}/${file}`);
+	  client.commands.set(command.data.name, command);
+} }
 
-   /* client.setProvider(
-    MongoClient.connect(config.mongoURL)
-        .then((client) => {
-            return new MongoDBProvider(client, 'lesgo');
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-);
- */
-   try {
-      console.log('Starting up Discord Client...');
-      client.on('ready', async () => {
-         console.log('Estabished connection with Discord...');
-         console.log(`Logged in as ${client.user.tag}!\n`);
+client.once('ready', c => {
+	console.log(`Ready! Logged in as ${c.user.tag}`);
+});
 
-         await mongo();
-         /* client.registry
-            .registerGroups([
-                ['moderation', 'moderation commands'],
-                ['misc', 'misc commands'],
-                ['economy', 'money and economy system commands'],
-            ])
-            .registerDefaults()
-            .registerCommandsIn(path.join(__dirname, 'cmds')); */
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
 
-         // load Prefixes
-         loadPrefixes(client);
+	const command = client.commands.get(interaction.commandName);
 
-         // Load commands
-         loadCommands(client);
+	if (!command) return;
 
-         // Load features
-         loadFeatures(client);
-      });
-      console.log('consoling token');
-      client.login(config.token);
-   } catch (err) {
-      console.log(err, '\n');
-   }
-} catch (err) {
-   console.log(err, '\n');
-}
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		console.error(error);
+		return interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+	}
+});
+
+client.login(token);
