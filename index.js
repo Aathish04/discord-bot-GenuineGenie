@@ -1,6 +1,8 @@
 const fs = require('fs');
 const { Client, Collection, Intents } = require('discord.js');
 
+require('dotenv').config()
+
 const clientId = process.env["CLIENTID"]
 const guildId = process.env["DEV_GUILD_ID"]
 const token = process.env["TOKEN"]
